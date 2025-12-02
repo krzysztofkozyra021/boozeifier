@@ -1,0 +1,28 @@
+name: Lint Python Codebase
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: [ opened, synchronize, reopened, ready_for_review ]
+    paths:
+      - '**/*.py'
+
+jobs:
+  lint-py:
+    name: Lint Python Codebase
+    timeout-minutes: 10
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Ruff
+        run: pip install ruff
+
+      - name: Ruff lint with auto-fix
+        run: ruff check . --fix --exit-non-zero-on-fix
