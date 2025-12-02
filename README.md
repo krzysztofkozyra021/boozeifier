@@ -18,6 +18,36 @@ dataset/
 
 Place your training images in the appropriate folders before training the model.
 
+## Usage
+
+### Prerequisites
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Training the Model
+
+To train the model, run the following command:
+
+```bash
+python train_model.py
+```
+
+This will train the model using the images in the `dataset/` directory and save the trained model as `boozeifier_model.keras`.
+
+### Running the Web App
+
+To start the Streamlit web application, run:
+
+```bash
+streamlit run main.py
+```
+
+This will launch the web interface where you can upload images to be classified.
+
 ## License
 
 See [LICENSE](LICENSE) for details.
